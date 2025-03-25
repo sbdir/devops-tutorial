@@ -1,5 +1,5 @@
 pipeline {
-    agent any // または agent { label 'docker' } など
+    agent any
     stages {
         stage('Clone repository') {
             steps {
@@ -9,7 +9,7 @@ pipeline {
         stage('Build image') {
             steps {
                 script {
-                    def app = docker.build("Dockerfile", ".") // Dockerfileのパスを指定
+                    def app = docker.build("edureka1/edureka", ".") // Dockerfileのパスを指定
                     env.APP_IMAGE = app.image // 後続のステージでイメージを参照できるようにする
                 }
             }
